@@ -1,0 +1,39 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+venv/
+env/
+.conda/
+.env
+
+# Jupyter
+.ipynb_checkpoints/
+
+# ML artifacts — go in MLflow or DVC, not Git
+*.pkl
+*.pickle
+*.joblib
+!models/champion_model.pkl
+!models/champion_model_metadata.json
+
+# Data — tracked by DVC
+data/raw/*.csv
+data/processed/*.csv
+data/features/*.csv
+
+# MLflow
+mlruns/
+mlflow.db
+
+# DVC cache
+.dvc/cache/
+.dvc/tmp/
+
+# Reports
+reports/*.png
+reports/*.html
+
+# OS
+.DS_Store
+Thumbs.db
