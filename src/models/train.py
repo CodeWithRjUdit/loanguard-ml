@@ -11,7 +11,7 @@ from src.data.data_preprocessing import load_and_split, encode_and_scale
 def train():
     # Paths - built relative to project root, regardless of where script is run from
     project_root = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", ".."))
-    csv_path = os.path.join(project_root, "data", "raw", "loan_data.csv")
+    csv_path = os.path.join(project_root, "data", "raw", "loan_default.csv")
     models_dir = os.path.join(project_root, "models")
     os.makedirs(models_dir, exist_ok=True)
 
