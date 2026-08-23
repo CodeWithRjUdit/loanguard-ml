@@ -1,0 +1,13 @@
+.git
+.gitignore
+__pycache__/
+*.pyc
+.ipynb_checkpoints/
+notebooks/
+mlflow.db
+mlruns/
+.dvc/cache/
+.dvc/tmp/
+venv/
+env/
+.conda/
