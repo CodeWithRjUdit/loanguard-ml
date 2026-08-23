@@ -26,3 +26,6 @@ jobs:
           file: ./Dockerfile
           push: true
           tags: ${{ secrets.DOCKERHUB_USERNAME }}/loanguard-ml:latest
+
+      - name: Trigger Render redeploy
+        run: curl -X POST ${{ secrets.RENDER_DEPLOY_HOOK_URL }}
