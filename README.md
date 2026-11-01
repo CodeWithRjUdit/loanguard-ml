@@ -1,5 +1,9 @@
 # LoanGuard ML
 
+[![Live Demo](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://loanguard-ml.streamlit.app/)
+
+**🚀 Live application: [https://loanguard-ml.streamlit.app/](https://loanguard-ml.streamlit.app/)**
+
 **LoanGuard ML** is a machine-learning demonstration that estimates the probability of loan default from applicant and loan characteristics. It exposes a Streamlit interface backed by a FastAPI prediction service.
 
 > **Important:** This project is an educational prototype. It is not a credit-scoring product, financial recommendation, or substitute for a regulated lending process. Do not use its output to make real lending decisions.
@@ -31,7 +35,7 @@ Saved Logistic Regression model
 Default probability + Low/High risk label
 ```
 
-The frontend is designed for Streamlit Community Cloud. The API can be hosted separately (for example, as a Docker web service on Render). The frontend's default API endpoint is:
+The frontend is deployed on Streamlit Community Cloud. The API can be hosted separately (for example, as a Docker web service on Render). The frontend's default API endpoint is:
 
 ```text
 https://loanguard-ml-api.onrender.com/predict
@@ -77,7 +81,24 @@ The application collects 16 fields:
 
 The API applies the fitted preprocessing objects saved during training. It returns the predicted class, estimated default probability, and a risk label. The current API uses a probability threshold of 0.5 for the Low/High label.
 
-## Deploy the backend on Render
+## Deployment
+
+### Frontend — Streamlit Community Cloud
+
+The Streamlit frontend is deployed and publicly accessible:
+
+**[Open LoanGuard ML](https://loanguard-ml.streamlit.app/)**
+
+Deployment configuration:
+
+- **Repository:** `CodeWithRjUdit/loanguard-ml`
+- **Branch:** `master`
+- **Main file path:** `src/frontend/app.py`
+- **Python version:** 3.11
+
+The frontend dependency file is located beside the entrypoint at `src/frontend/requirements.txt`, so the cloud build installs only the frontend packages rather than the full model-training environment.
+
+### Backend — Render
 
 The repository includes a Dockerfile that starts the FastAPI application on port 8000.
 
@@ -101,20 +122,6 @@ API_URL = "https://YOUR-RENDER-SERVICE.onrender.com/predict"
 ```
 
 The backend's Docker image installs dependencies from `requirements-api.txt`.
-
-## Deploy the frontend on Streamlit Community Cloud
-
-1. Open [Streamlit Community Cloud](https://share.streamlit.io/) and sign in with the GitHub account that has access to this repository.
-2. Select **Create app** and choose:
-   - **Repository:** `CodeWithRjUdit/loanguard-ml`
-   - **Branch:** `master`
-   - **Main file path:** `src/frontend/app.py`
-3. Choose Python 3.11 if prompted.
-4. Deploy the app.
-
-The frontend dependency file is located beside the entrypoint at `src/frontend/requirements.txt`, so the cloud build installs only the frontend packages rather than the full model-training environment.
-
-If the backend URL differs from the default, set the `API_URL` secret as shown in the Render section above.
 
 ## Run locally
 
